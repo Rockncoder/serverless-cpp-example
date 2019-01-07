@@ -1,0 +1,18 @@
+kind: pipeline
+name: default
+
+workspace:
+  #base: /ci
+  #path: esp32-phonon
+  base: /ci/serverless-cpp-example
+  path: "."
+
+steps:
+  - name: make
+    image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    commands:
+      - mkdir build
+      - cd build
+      - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=~/out
+      - ninja-build -v
+      - ninja-build aws-lambda-package-example
