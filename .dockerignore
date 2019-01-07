@@ -1,0 +1,8 @@
+*.zip
+Dockerfile*
+config.*.yml
+node_modules/
+package.json
+serverless.yml
+yarn-error.log
+yarn.lock
