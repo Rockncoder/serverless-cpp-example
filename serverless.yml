@@ -1,0 +1,48 @@
+service:
+  name: serverless-cpp-example
+  publish: false
+
+package:
+  individually: true
+
+plugins:
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+
+custom:
+  apigwBinary:
+    types:
+      - "application/octet-stream"
+
+################################################################################
+# AWS Lambda Runtime Library - C++
+provider:
+  runtime: provided
+  name: aws
+  stage: ${opt:stage, "dev"}
+  region: us-west-2
+  timeout: 60
+
+################################################################################
+functions:
+  example:
+    package:
+      artifact: example.zip
+    memorySize: 128
+    handler: example
+    timeout: 30
+    environment:
+      BINARY_CONTENT_TYPES: "application/octet-stream"
+    events:
+      - http:
+          path: /example
+          method: post
+          request:
+            parameters:
+              headers:
+                "Authorization": false
+                "Content-Type": false
+          contentHandling: CONVERT_TO_BINARY
+      - http:
+          path: /example
+          method: get
