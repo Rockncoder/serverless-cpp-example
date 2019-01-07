@@ -11,8 +11,14 @@ steps:
   - name: make
     image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
     commands:
-      - mkdir /tmp/build
       - cd /tmp/build
       - cmake /ci/serverless-cpp-example -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
       - ninja-build -v
       - ninja-build aws-lambda-package-example
+    volumes:
+      - name: build
+        path: /tmp/build
+
+volumes:
+  - name: build
+    temp: {}
