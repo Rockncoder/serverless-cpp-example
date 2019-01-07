@@ -19,3 +19,11 @@ add_executable("example" example.cpp)
 target_link_libraries("example" PUBLIC AWS::aws-lambda-runtime base64)
 
 aws_lambda_package_target("example")
+
+# CTest / doctest test runner
+enable_testing()
+
+add_library(test_runner OBJECT test_runner_main.cpp)
+
+add_executable(test_example test_example.cpp $<TARGET_OBJECTS:test_runner>)
+add_test(NAME test_example COMMAND test_example)
