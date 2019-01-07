@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "build": "docker build . -t serverless-cpp-example",
+    "preartifact": "yarn run build",
+    "artifact": "docker create --name serverless-cpp-example serverless-cpp-example && docker cp serverless-cpp-example:/example.zip .; docker stop serverless-cpp-example; docker rm serverless-cpp-example",
+    "predeploy": "yarn run artifact",
+    "deploy": "sls deploy"
+  },
+  "devDependencies": {
+    "serverless": "^1.30.0",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-apigwy-binary": "^0.1.0"
+  },
+  "private": true
+}
