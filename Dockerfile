@@ -29,7 +29,7 @@ RUN \
   && cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
-    -DCMAKE_INSTALL_PREFIX=~/out \
+    -DCMAKE_INSTALL_PREFIX=/opt/local \
   && ninja-build \
   && ninja-build install \
   && cd \
@@ -43,7 +43,7 @@ RUN \
   && cd build \
   && cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_PREFIX_PATH=~/out \
+    -DCMAKE_PREFIX_PATH=/opt/local \
   && ninja-build -v \
   && ninja-build aws-lambda-package-example \
   && cp *.zip / \
