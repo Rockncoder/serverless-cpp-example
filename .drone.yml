@@ -10,25 +10,19 @@ workspace:
 steps:
   - name: test
     image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    privileged: true
     commands:
-      - cd /tmp/build
-      - cmake /ci/serverless-cpp-example -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local -DCTEST_BINARY_OUTPUT_DIRECTORY=/tmp/
+      - mkdir -p build
+      - cd build
+      - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local -DCTEST_BINARY_OUTPUT_DIRECTORY=/tmp/
       - ninja-build test_example
       - ninja-build test
-    volumes:
-      - name: build
-        path: /tmp/build
 
   - name: package
     image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    privileged: true
     commands:
-      - cd /tmp/build
-      - cmake /ci/serverless-cpp-example -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
+      - mkdir -p build
+      - cd build
+      - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
       - ninja-build aws-lambda-package-example
-    volumes:
-      - name: build
-        path: /tmp/build
-
-volumes:
-  - name: build
-    temp: {}
