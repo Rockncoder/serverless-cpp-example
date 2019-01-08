@@ -3,7 +3,7 @@ name: default
 
 workspace:
   #base: /ci
-  #path: esp32-phonon
+  #path: serverless-cpp-example
   base: /ci/serverless-cpp-example
   path: "."
 
