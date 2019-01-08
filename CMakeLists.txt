@@ -25,5 +25,9 @@ enable_testing()
 
 add_library(test_runner OBJECT test_runner_main.cpp)
 
-add_executable(test_example test_example.cpp $<TARGET_OBJECTS:test_runner>)
+add_executable(
+  ${CTEST_BINARY_OUTPUT_DIRECTORY}test_example
+    test_example.cpp
+    $<TARGET_OBJECTS:test_runner>
+)
 add_test(NAME test_example COMMAND ${CTEST_BINARY_OUTPUT_DIRECTORY}test_example)
