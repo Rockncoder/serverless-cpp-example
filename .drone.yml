@@ -10,8 +10,9 @@ workspace:
 steps:
   - name: test
     image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    environment:
+      CTEST_BINARY_OUTPUT_DIRECTORY: /tmp/
     commands:
-      - mkdir -p /tmp/build
       - cd /tmp/build
       - cmake /ci/serverless-cpp-example -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
       - ninja-build test_example
