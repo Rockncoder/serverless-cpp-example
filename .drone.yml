@@ -10,6 +10,7 @@ workspace:
 steps:
   - name: test
     image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    privileged: true
     commands:
       - cd /tmp/build
       - cmake /ci/serverless-cpp-example -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
