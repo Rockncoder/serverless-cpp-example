@@ -10,7 +10,7 @@ workspace:
 steps:
   - name: test
     image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
-    privileged: true
+    #privileged: true
     commands:
       - mkdir -p build
       - cd build
@@ -20,7 +20,7 @@ steps:
 
   - name: package
     image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
-    privileged: true
+    #privileged: true
     commands:
       - mkdir -p build
       - cd build
