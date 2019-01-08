@@ -19,6 +19,7 @@ steps:
       - ls -l /tmp/build
       - find . -name test_example
       - chmod +x test_example
+      - /tmp/build/test_example
       - ninja-build test
     volumes:
       - name: build
