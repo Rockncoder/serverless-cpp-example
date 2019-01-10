@@ -9,7 +9,7 @@ workspace:
 
 steps:
   - name: test
-    image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    image: paulreimer/aws-lambda-cpp:latest
     #privileged: true
     commands:
       - mkdir -p build
@@ -19,7 +19,7 @@ steps:
       - ninja-build test
 
   - name: package
-    image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    image: paulreimer/aws-lambda-cpp:latest
     #privileged: true
     commands:
       - mkdir -p build
