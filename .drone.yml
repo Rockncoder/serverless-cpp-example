@@ -12,6 +12,8 @@ steps:
     image: paulreimer/aws-lambda-cpp:latest
     privileged: true
     commands:
+      - whoami
+      - getfacl build
       - mkdir -p build
       - cd build
       - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
