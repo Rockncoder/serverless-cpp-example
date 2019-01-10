@@ -14,7 +14,7 @@ steps:
     commands:
       - mkdir -p build
       - cd build
-      - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local -DCTEST_BINARY_OUTPUT_DIRECTORY=/tmp/
+      - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
       - ninja-build test_example
       - ninja-build test
 
@@ -22,7 +22,5 @@ steps:
     image: paulreimer/aws-lambda-cpp:latest
     privileged: true
     commands:
-      - mkdir -p build
       - cd build
-      - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
       - ninja-build aws-lambda-package-example
