@@ -10,15 +10,7 @@ workspace:
 steps:
   - name: test
     image: paulreimer/aws-lambda-cpp:latest
-    privileged: true
     commands:
-      #- mkdir -p build
-      #
-      #- yum -y update
-      #- yum -y install acl policycoreutils-python
-      #- getfacl build
-      #- semanage fcontext -l
-      #
       - cd build
       - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
       - ninja-build test_example
@@ -26,7 +18,6 @@ steps:
 
   - name: package
     image: paulreimer/aws-lambda-cpp:latest
-    privileged: true
     commands:
       - cd build
       - ninja-build aws-lambda-package-example
