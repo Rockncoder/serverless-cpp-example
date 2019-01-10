@@ -12,11 +12,13 @@ steps:
     image: paulreimer/aws-lambda-cpp:latest
     privileged: true
     commands:
+      - mkdir -p build
+      #
       - yum -y update
       - yum -y install acl policycoreutils-python
       - getfacl build
       - semanage fcontext -l
-      - mkdir -p build
+      #
       - cd build
       - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
       - ninja-build test_example
