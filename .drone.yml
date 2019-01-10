@@ -16,6 +16,8 @@ steps:
       - cd build
       - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local -DCTEST_BINARY_OUTPUT_DIRECTORY=/tmp/
       - ninja-build test_example
+      # Required to allow running executables outside SELinux host volume
+      - cp test_example /tmp
       - ninja-build test
 
   - name: package
