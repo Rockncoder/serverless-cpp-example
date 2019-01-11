@@ -10,6 +10,10 @@ workspace:
 steps:
   - name: test
     image: paulreimer/aws-lambda-cpp:latest
+    resources:
+      requests:
+        cpu: 100m
+        memory: 200Mi
     commands:
       - cd build
       - cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local
