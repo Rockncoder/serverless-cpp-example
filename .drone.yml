@@ -34,6 +34,13 @@ steps:
         from_secret: deploy_aws_secret_access_id
       aws_secret_key:
         from_secret: deploy_aws_secret_key
+    volumes:
+      - name: tmproot
+        path: /root
+
+volumes:
+  - name: tmproot
+    temp: {}
 
 node:
   cloud.google.com/gke-os-distribution: ubuntu
