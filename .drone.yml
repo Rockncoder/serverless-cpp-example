@@ -9,7 +9,7 @@ workspace:
 
 steps:
   - name: test
-    image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    image: paulreimer/aws-lambda-cpp:latest
     resources:
       requests:
         cpu: 100m
@@ -21,7 +21,7 @@ steps:
       - ninja-build test
 
   - name: package
-    image: gcr.io/p-rimes-net/aws-lambda-cpp:latest
+    image: paulreimer/aws-lambda-cpp:latest
     commands:
       - cd build
       - ninja-build aws-lambda-package-example
