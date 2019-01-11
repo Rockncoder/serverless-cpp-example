@@ -25,3 +25,6 @@ steps:
     commands:
       - cd build
       - ninja-build aws-lambda-package-example
+
+node:
+  cloud.google.com/gke-os-distribution: ubuntu
