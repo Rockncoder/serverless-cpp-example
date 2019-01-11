@@ -30,6 +30,11 @@ steps:
     image: giusedroid/drone-serverless
     settings:
       action: deploy
+    environment:
+      PLUGIN_AWS_SECRET_ACCESS_ID:
+        from_secret: deploy_aws_secret_access_id
+      PLUGIN_AWS_SECRET_KEY:
+        from_secret: deploy_aws_secret_key
 
 node:
   cloud.google.com/gke-os-distribution: ubuntu
