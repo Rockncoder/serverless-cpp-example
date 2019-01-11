@@ -26,5 +26,10 @@ steps:
       - cd build
       - ninja-build aws-lambda-package-example
 
+  - name: deploy
+    image: giusedroid/drone-serverless
+    settings:
+      action: deploy
+
 node:
   cloud.google.com/gke-os-distribution: ubuntu
