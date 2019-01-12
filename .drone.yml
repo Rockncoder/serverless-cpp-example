@@ -43,4 +43,4 @@ volumes:
     temp: {}
 
 node:
-  cloud.google.com/gke-os-distribution: ubuntu
+  beta.kubernetes.io/instance-type: g1-small
