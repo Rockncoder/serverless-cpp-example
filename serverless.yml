@@ -19,7 +19,7 @@ custom:
 provider:
   runtime: provided
   name: aws
-  #stage: ${opt:stage, "dev"}
+  stage: ${opt:stage, "dev"}
   region: us-west-2
   timeout: 60
 
