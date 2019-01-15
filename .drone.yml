@@ -25,14 +25,14 @@ steps:
       - ninja-build aws-lambda-package-example
 
   - name: npm
-    image: gcr.io/p-rimes-net/drone-serverless:latest
+    image: gcr.io/p-rimes-net/drone-serverless:1.36.1
     commands:
       - npm install
     environment:
       HOME: "/tmp"
 
   - name: deploy
-    image: gcr.io/p-rimes-net/drone-serverless:latest
+    image: gcr.io/p-rimes-net/drone-serverless:1.36.1
     settings:
       action: deploy
       aws_secret_access_id:
