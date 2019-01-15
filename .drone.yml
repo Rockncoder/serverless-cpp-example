@@ -28,6 +28,8 @@ steps:
     image: gcr.io/p-rimes-net/drone-serverless:latest
     commands:
       - npm install
+    environment:
+      HOME: "/tmp"
 
   - name: deploy
     image: gcr.io/p-rimes-net/drone-serverless:latest
