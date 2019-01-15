@@ -27,7 +27,7 @@ provider:
 functions:
   example:
     package:
-      artifact: example.zip
+      artifact: build/example.zip
     memorySize: 128
     handler: example
     timeout: 30
