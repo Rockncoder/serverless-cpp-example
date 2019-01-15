@@ -24,6 +24,11 @@ steps:
       - cd build
       - ninja-build aws-lambda-package-example
 
+  - name: npm
+    image: gcr.io/p-rimes-net/drone-serverless:latest
+    commands:
+      - npm install
+
   - name: deploy
     image: gcr.io/p-rimes-net/drone-serverless:latest
     settings:
