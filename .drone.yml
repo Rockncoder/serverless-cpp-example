@@ -25,7 +25,7 @@ steps:
       - ninja-build aws-lambda-package-example
 
   - name: deploy
-    image: paulreimer/drone-serverless
+    image: gcr.io/p-rimes-net/drone-serverless:latest
     settings:
       action: deploy
       aws_secret_access_id:
