@@ -32,13 +32,8 @@ steps:
         from_secret: deploy_aws_secret_access_id
       aws_secret_key:
         from_secret: deploy_aws_secret_key
-    volumes:
-      - name: tmproot
-        path: /root
-
-volumes:
-  - name: tmproot
-    temp: {}
+    environment:
+      HOME: "/tmp"
 
 node:
   beta.kubernetes.io/instance-type: g1-small
