@@ -30,8 +30,10 @@ steps:
       - npm install
     environment:
       HOME: "/tmp"
+    when:
+     event: promote
 
-  - name: deploy
+  - name: deploy_dev
     image: gcr.io/p-rimes-net/drone-serverless:1.36.1
     settings:
       action: deploy
@@ -41,6 +43,23 @@ steps:
         from_secret: deploy_aws_secret_key
     environment:
       HOME: "/tmp"
+    when:
+     event: promote
+     environment: dev
+
+  - name: deploy_production
+    image: gcr.io/p-rimes-net/drone-serverless:1.36.1
+    settings:
+      action: deploy
+      aws_secret_access_id:
+        from_secret: deploy_aws_secret_access_id
+      aws_secret_key:
+        from_secret: deploy_aws_secret_key
+    environment:
+      HOME: "/tmp"
+    when:
+     event: promote
+     environment: production
 
 node:
   beta.kubernetes.io/instance-type: g1-small
