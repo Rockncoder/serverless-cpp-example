@@ -28,7 +28,7 @@ invocation_response example(const invocation_request& request)
 
   std::reverse(decoded.begin(), decoded.end());
   string output;
-  std::transform(decoded.begin(), decoded.end(), std::back_inserter(output), ::toupper);
+  std::transform(decoded.begin(), decoded.end(), std::back_inserter(output), ::tolower);
 
   const auto encoded = base64::encode(output);
 
